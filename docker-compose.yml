@@ -14,7 +14,7 @@ services:
       - 8080:80
 
   phpserver:
-    image: php:fpm-alpine
+    build: docker/php
     volumes:
       - ./:/var/www
 
