@@ -1,9 +1,9 @@
 {
-    "name": "zendframework/zend-expressive-skeleton",
-    "description": "Zend expressive skeleton. Begin developing PSR-7 middleware applications in seconds!",
+    "name": "learningcontainers/dockerfordevs",
+    "description": "Sample application for Docker for Developers, by Chris Tankersley",
     "type": "project",
-    "homepage": "https://github.com/zendframework/zend-expressive-skeleton",
-    "license": "BSD-3-Clause",
+    "homepage": "https://leanpub.com/dockerfordevs",
+    "license": "MIT",
     "require": {
         "php": "^5.6 || ^7.0",
         "roave/security-advisories": "dev-master",
