@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 volumes:
   mysqldata:
@@ -14,7 +14,16 @@ services:
       - 8080:80
 
   phpserver:
-    build: docker/php
+    build:
+      context: docker/php
+      target: php-base
+    volumes:
+      - ./:/var/www
+
+  php:
+    build:
+      context: docker/php
+      target: php-cli
     volumes:
       - ./:/var/www
 
