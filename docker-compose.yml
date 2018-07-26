@@ -1,0 +1,23 @@
+version: '3.4'
+
+volumes:
+  mysqldata:
+    driver: local
+
+services:
+  d4dapp:
+    build:
+      context: docker/
+      target: basewebserver
+    volumes:
+      - ./:/var/www/
+    ports:
+      - 8080:80
+
+  mysqlserver:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: d4dapp
+      MYSQL_ROOT_PASSWORD: 'rootpass'
+    volumes:
+      - mysqldata:/var/lib/mysql
