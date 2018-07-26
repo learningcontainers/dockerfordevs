@@ -3,7 +3,8 @@
 # =============================================================================
 FROM php:apache as basewebserver
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite \
+    && docker-php-ext-install pdo_mysql
 
 # =============================================================================
 # Composer

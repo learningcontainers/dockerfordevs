@@ -14,9 +14,10 @@ namespace App\Queue\Application;
 use App\Queue\QueueService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Stratigility\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Zend\Diactoros\Response\JsonResponse;
 
-class IndexAction implements MiddlewareInterface
+class IndexAction implements RequestHandlerInterface
 {
     /**
      * @var QueueService
@@ -28,7 +29,7 @@ class IndexAction implements MiddlewareInterface
         $this->queueService = $queueService;
     }
 
-    public function get(ServerRequestInterface $request, ResponseInterface $response)
+    public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         $queues = $this->queueService->fetchAll();
         $data = [];
@@ -43,14 +44,13 @@ class IndexAction implements MiddlewareInterface
             $data[] = $item;
         }
 
-        $response->getBody()->write(json_encode([
+        $response = new JsonResponse([
             'total' => count($queues),
             '_embedded' => [
                 'queues' => $data,
             ],
-        ]));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        ]);
+        return $response;
     }
 
     /**

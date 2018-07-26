@@ -9,4 +9,10 @@
 declare(strict_types=1);
 
 return [
+    'database' => [
+        'driver' => 'Pdo_Mysql',
+        'username' => 'root',
+        'password' => 'rootpass',
+        'database' => 'd4dapp',
+    ]
 ];
