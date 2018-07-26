@@ -21,6 +21,9 @@ return [
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [
             // Fully\Qualified\ClassName::class => Fully\Qualified\FactoryName::class,
+            \App\Queue\Application\IndexAction::class => \App\Queue\Application\IndexActionFactory::class,
+            \App\Queue\QueueService::class => \App\Queue\QueueServiceFactory::class,
+            
         ],
     ],
 ];
