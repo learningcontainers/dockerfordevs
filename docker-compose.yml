@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+    webserver:
+        build: ./
+        ports: [ '8080:80' ]
+        volumes: [ './:/var/www/html/' ]
